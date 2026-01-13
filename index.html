@@ -1,2 +1,568 @@
-# artisan restaurant bintang 5 
-portofolio website kalobtand X web studio 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Vista | 5-Star Dining Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1E2329;
+            --gold-accent: #D4AF37;
+            --text-light: #E0E0E0;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-display: swap;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Studio Badge */
+        .studio-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-accent);
+            padding: 4px 12px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            z-index: 100;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+        }
+
+        .hero-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(rgba(30,35,41,0.92), rgba(30,35,41,0.95));
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-weight: 700;
+            font-size: 56px;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            color: var(--gold-accent);
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-weight: 300;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            padding: 16px 45px;
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 3px;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-hero:hover {
+            background: var(--gold-accent);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Social Proof */
+        .social-proof {
+            margin-top: 35px;
+            text-align: center;
+            color: var(--gold-accent);
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .social-proof p:first-child {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .social-proof p:last-child {
+            font-size: 15px;
+            font-style: italic;
+            opacity: 0.8;
+            color: var(--text-light);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 120px 0;
+            background: var(--bg-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--gold-accent);
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.25);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 80px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .menu-category-title {
+            grid-column: 1 / -1;
+            font-size: 20px;
+            margin: 50px 0 30px;
+            color: var(--gold-accent);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .menu-category-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+        }
+
+        /* Glass Card Styles */
+        .menu-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            padding: 40px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 0;
+            background: var(--gold-accent);
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+        }
+
+        .menu-card:hover::before {
+            height: 100%;
+        }
+
+        .dish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+        }
+
+        .dish-name {
+            font-size: 22px;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .dish-desc {
+            font-size: 14px;
+            color: #AAA;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .price {
+            font-size: 18px;
+            color: var(--gold-accent);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            padding: 100px 0;
+            background: #15181c;
+            position: relative;
+        }
+
+        .booking-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            padding: 60px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 18px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold-accent);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-reserve {
+            width: 100%;
+            padding: 18px;
+            background: var(--gold-accent);
+            color: var(--bg-color);
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .btn-reserve:hover {
+            background: #fff;
+            letter-spacing: 5px;
+        }
+
+        /* Footer */
+        .site-footer {
+            padding: 80px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 26px;
+            color: var(--gold-accent);
+            margin-bottom: 20px;
+            letter-spacing: 6px;
+            font-weight: 700;
+        }
+
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .social-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--gold-accent);
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover svg {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .watermark-container {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: inline-block;
+        }
+
+        .watermark {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: var(--gold-accent);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .section-title { font-size: 32px; letter-spacing: 3px; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .menu-card { padding: 25px 20px; }
+            .booking-form { padding: 30px 20px; }
+            .form-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+            .btn-reserve { padding: 14px; font-size: 15px; }
+            .dish-header { flex-direction: column; gap: 5px; }
+            .studio-badge { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="studio-badge">DEPLOYED BY KALOBTAND X</div>
+
+    <header class="hero">
+        <div class="hero-bg-container">
+            <svg class="hero-pattern" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <circle cx="50%" cy="50%" r="850" stroke="#D4AF37" stroke-width="1" fill="none" opacity="0.08"/>
+                <circle cx="50%" cy="50%" r="600" stroke="#D4AF37" stroke-width="1" fill="none" opacity="0.12"/>
+                <circle cx="50%" cy="50%" r="400" stroke="#D4AF37" stroke-width="1" fill="none" opacity="0.15"/>
+            </svg>
+        </div>
+        
+        <div class="container hero-content">
+            <h1>Kualitas Eksklusif.<br>Dirancang Abadi.</h1>
+            <p>Gastronomi futuristik bertemu estetika bintang lima.</p>
+            <a href="#menu" class="btn-hero">Lihat Menu Lengkap</a>
+
+            <div class="social-proof">
+                <p>⭐ 5/5 • 12+ reviews</p>
+                <p>"The best dining experience I’ve ever had."</p>
+            </div>
+        </div>
+    </header>
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">The Collection</h2>
+            <p class="section-subtitle">Curated for the refined palate.</p>
+            
+            <div class="menu-grid">
+                
+                <div class="menu-category-title">01 // Starter</div>
+                
+                <div class="menu-card">
+                    <div class="dish-header">
+                        <h3 class="dish-name">Stellar Scallop Crudo</h3>
+                        <span class="price">285K</span>
+                    </div>
+                    <p class="dish-desc">Hokkaido scallops, yuzu pearls, fermented chili dust, micro-cilantro infused oil.</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="dish-header">
+                        <h3 class="dish-name">Foie Gras Terrine</h3>
+                        <span class="price">320K</span>
+                    </div>
+                    <p class="dish-desc">Duck liver, fig jam, brioche toast points, 24k gold leaf garnish.</p>
+                </div>
+
+                <div class="menu-category-title">02 // Main Course</div>
+
+                <div class="menu-card">
+                    <div class="dish-header">
+                        <h3 class="dish-name">Galactic Wagyu A5</h3>
+                        <span class="price">1.450K</span>
+                    </div>
+                    <p class="dish-desc">Charcoal grilled Miyazaki beef, truffle potato pavé, bone marrow reduction.</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="dish-header">
+                        <h3 class="dish-name">Orbital Lobster Thermidor</h3>
+                        <span class="price">890K</span>
+                    </div>
+                    <p class="dish-desc">Whole Boston lobster, cognac cream, gruyère cheese, dehydrated caviar.</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="dish-header">
+                        <h3 class="dish-name">Black Truffle Risotto</h3>
+                        <span class="price">450K</span>
+                    </div>
+                    <p class="dish-desc">Acquerello rice, parmigiano reggiano 36-mo, fresh shaved winter truffle.</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="dish-header">
+                        <h3 class="dish-name">Pan-Seared Seabass</h3>
+                        <span class="price">380K</span>
+                    </div>
+                    <p class="dish-desc">Sustainable seabass, saffron foam, asparagus velouté, squid ink coral.</p>
+                </div>
+
+                <div class="menu-category-title">03 // Sweet Ending</div>
+
+                <div class="menu-card">
+                    <div class="dish-header">
+                        <h3 class="dish-name">Nebula Dark Chocolate</h3>
+                        <span class="price">195K</span>
+                    </div>
+                    <p class="dish-desc">70% single origin cocoa sphere, warm caramel pour, liquid nitrogen raspberry.</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="dish-header">
+                        <h3 class="dish-name">Molecular Lemon Tart</h3>
+                        <span class="price">165K</span>
+                    </div>
+                    <p class="dish-desc">Deconstructed lemon curd, burnt meringue, basil gel, almond soil.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="container">
+            <h2 class="section-title">Secure Your Table</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-grid">
+                    <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                    <input type="email" class="form-control" placeholder="Alamat Email" required>
+                </div>
+                <div class="form-grid">
+                    <input type="date" class="form-control" required>
+                    <input type="number" class="form-control" placeholder="Jumlah Tamu" min="1" max="10" required>
+                </div>
+                <button type="submit" class="btn-reserve" id="submitBtn">Reserve Now</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-logo">ARTISAN VISTA</div>
+            
+            <div class="social-container">
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                
+                <a href="#" class="social-icon" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v6.16c0 2.52-1.12 4.84-2.9 6.24-1.72 1.36-4.04 1.86-6.23 1.25-2.07-.57-3.86-1.92-4.98-3.79-1.47-2.45-1.23-5.46.36-7.85.92-1.38 2.3-2.34 3.9-2.7 1.03-.23 2.1-.2 3.13.1v4.08c-.73-.24-1.52-.22-2.24.16-1.21.64-1.64 2.19-1.02 3.42.5.99 1.64 1.47 2.69 1.14 1.04-.33 1.7-1.39 1.7-2.49v-13.8z"/></svg>
+                </a>
+
+                <a href="#" class="social-icon" aria-label="WhatsApp Business">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+            </div>
+
+            <p style="font-size: 13px; color: #666;">&copy; 2026. All Rights Reserved.</p>
+            
+            <div class="watermark-container">
+                <span class="watermark">Powered by Kalobtand X Web Studio</span>
+            </div>
+      </footer>
+
+    <script>
+        const form = document.getElementById('bookingForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Menambahkan class 'loading' pada tombol saat submit
+            btn.classList.add('loading');
+
+            // Simulasi proses pengiriman data selama 1,5 detik
+            setTimeout(() => {
+                // Menghapus kembali class 'loading'
+                btn.classList.remove('loading');
+                
+                // Menampilkan notifikasi sukses
+                alert('Permintaan Reservasi Terkirim.');
+                
+                // Mengosongkan kembali isi formulir
+                form.reset();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
